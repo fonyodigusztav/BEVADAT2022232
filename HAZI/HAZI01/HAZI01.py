@@ -18,7 +18,11 @@ def subset(input_list:list, start_index:int, end_index:int) -> list:
 #function name must be: every_nth
 #input parameters: input_list,step_size
      
-
+def every_nth(input_list, step_size) -> list:
+    result = []
+    for i in range(step_size-1, len(input_list), step_size):
+            result.append(input_list[i])
+    return result
 
      
 
@@ -27,26 +31,39 @@ def subset(input_list:list, start_index:int, end_index:int) -> list:
 #function name must be: unique
 #input parameters: input_list
      
+def unique(input_list : list) -> bool:
+    for i in range(0, len(input_list), 1):
+        for j in range(len(input_list)-1, -1, -1):
+            if j != i:
+                if input_list[i]==input_list[j]:
+                    return False
+    return True
 
 #Create a function that can flatten a nested list ([[..],[..],..])
 #return type: list
 #fucntion name must be: flatten
 #input parameters: input_list
      
-
-
-     
+def flatten(input_list : list) -> list:
+    result = []
+    for sub_list in input_list:
+        for x in sub_list:
+            result.append(x)
+    return result
 
 #Create a function that concatenates n lists
 #return type: list
 #function name must be: merge_lists
 #input parameters: *args
 
+def merge_lists(*args) -> list:
+    result = []
+    for i in args:
+        for element in i:
+            if element not in result:
+                result.append(element)
+    return result
      
-
-
-     
-
 #Create a function that can reverse a list of tuples
 #example [(1,2),...] => [(2,1),...]
 #return type: list
